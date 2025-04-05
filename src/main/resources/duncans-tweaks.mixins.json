@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "me.duncanruns.duncanstweaks.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"BedItemMixin",
+		"EndermanEntityMixin",
+		"LivingEntityMixin",
+		"PlayerEntityMixin",
+		"ServerPlayerEntityMixin",
+		"VillagerEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

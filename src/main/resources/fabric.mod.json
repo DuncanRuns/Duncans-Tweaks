@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "duncans-tweaks",
+	"version": "${version}",
+	"name": "Duncan's Tweaks",
+	"description": "An opinionated mod on tweaks for semi-technical SMP.",
+	"authors": [
+		"DuncanRuns"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/duncans-tweaks/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"me.duncanruns.duncanstweaks.DuncansTweaks"
+		]
+	},
+	"mixins": [
+		"duncans-tweaks.mixins.json"
+	],
+	"depends": {
+		"fabric-api": "*"
+	}
+}
