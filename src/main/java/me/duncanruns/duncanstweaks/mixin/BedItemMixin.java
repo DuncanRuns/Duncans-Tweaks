@@ -30,7 +30,7 @@ public abstract class BedItemMixin extends BlockItem {
         if (player == null) return result;
 
         // If client processing, cancel
-        if (player.getWorld().isClient) return result;
+        if (player.getEntityWorld().isClient()) return result;
 
         // Get some info
         BlockPos placeAttemptPos = new ItemPlacementContext(context).getBlockPos();

@@ -23,7 +23,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "getProjectileType", at = @At("RETURN"), cancellable = true)
     private void allowNoArrowMixin(ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
-        if (cir.getReturnValue().isEmpty() && stack.getItem() instanceof BowItem && EnchantmentHelper.getLevel(DuncansTweaks.getEnchantment(getWorld(), Enchantments.INFINITY.getValue()), stack) > 0) {
+        if (cir.getReturnValue().isEmpty() && stack.getItem() instanceof BowItem && EnchantmentHelper.getLevel(DuncansTweaks.getEnchantment(getEntityWorld(), Enchantments.INFINITY.getValue()), stack) > 0) {
             cir.setReturnValue(Items.ARROW.getDefaultStack());
         }
     }
