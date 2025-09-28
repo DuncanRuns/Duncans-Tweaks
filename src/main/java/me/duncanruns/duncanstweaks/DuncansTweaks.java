@@ -19,12 +19,13 @@ public class DuncansTweaks implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("duncans-tweaks");
 
     public static RegistryEntry<Enchantment> getEnchantment(World world, Identifier identifier) throws NoSuchElementException {
-        return world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT).getEntry(identifier).get();
+        return world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT).getEntry(identifier).orElseThrow();
     }
 
     @Override
     public void onInitialize() {
         registerSleepEvents();
+        LOGGER.info("Duncan's Tweaks initialized");
     }
 
     private void registerSleepEvents() {
