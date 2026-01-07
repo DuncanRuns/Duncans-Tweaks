@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.village.TradeOfferList;
 import net.minecraft.village.VillagerData;
 import net.minecraft.world.World;
@@ -28,9 +29,11 @@ public abstract class VillagerEntityMixin extends MerchantEntity {
 
     @Inject(method = "beginTradeWith", at = @At("HEAD"))
     private void scrambleOnTalk(PlayerEntity customer, CallbackInfo info) {
+        World entityWorld = getEntityWorld();
+        if (entityWorld.isClient()) return;
         if (getExperience() == 0 && getVillagerData().level() <= 1 && !customer.isSneaking()) {
             this.offers = new TradeOfferList();
-            fillRecipes();
+            fillRecipes((ServerWorld) entityWorld);
         }
     }
 }

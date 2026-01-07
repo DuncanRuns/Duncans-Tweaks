@@ -45,8 +45,8 @@ public abstract class BedItemMixin extends BlockItem {
             player.trySleep(player.getBlockPos()).ifLeft(reason -> {
                 // If failed, set floor sleeping back to false and give the reason message
                 ((FloorSleeper) player).duncansTweaks$setFloorSleeping(false); // setFloorSleeping(false) must also be called on player wake up
-                if (reason.getMessage() != null) {
-                    player.sendMessage(reason.getMessage(), true);
+                if (reason.message() != null) {
+                    player.sendMessage(reason.message(), true);
                 }
             });
 
