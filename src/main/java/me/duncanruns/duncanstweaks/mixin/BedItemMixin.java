@@ -1,14 +1,14 @@
 package me.duncanruns.duncanstweaks.mixin;
 
 import me.duncanruns.duncanstweaks.mixinint.FloorSleeper;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BedItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 
@@ -37,7 +37,7 @@ public abstract class BedItemMixin extends BlockItem {
         BlockPos placeAttemptPos = new BlockPlaceContext(context).getClickedPos();
 
         // If the player collides with the theoretical bed that was trying to be placed
-        if (player.isColliding(placeAttemptPos, Blocks.WHITE_BED.defaultBlockState())) {
+        if (player.isColliding(placeAttemptPos, Blocks.BED.white().defaultBlockState())) {
 
             // Set floor sleeping to true
             ((FloorSleeper) player).duncansTweaks$setFloorSleeping(true);
